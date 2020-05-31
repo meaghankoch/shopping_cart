@@ -50,8 +50,12 @@ for p in products:
    #  print(f" + {p['name']} (${my_price})")
 
 
-z = input("Please input a product indentifier, or 'Done' if there are no new items: ")
-matching_products = [p for p in products if str(p["id"]) == str(z)]
-matching_product = matching_products [0]
-print("Z: " + matching_product["name"] + " $"  + str(matching_product ["price"]))
+while True: 
+    z = input("Please input a product indentifier, or 'Done' if there are no new items: ")
+    if z == "Done":
+        break
+    else:
+        matching_products = [p for p in products if str(p["id"]) == str(z)]
+        matching_product = matching_products [0]
+        print("Z: " + matching_product["name"] + " $"  + str(matching_product ["price"]))
  
