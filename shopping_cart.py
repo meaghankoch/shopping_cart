@@ -38,32 +38,20 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
+#Data Exploration
+    #print(type(products)) --> List
+    #print(dir(products))
 
-#print(type(products))
-#print(dir(products))
+    #print(z)
+#print(type(z)) --> String
 
-
-z = input("Please input a product indentifier, or 'Done' if there are no new items:")
-print(z)
-
-print(type(z))
-
-#i = 1
-#while i < 21:
- # print(i)
+for p in products:
+ my_price = p["price"]
+   #  print(f" + {p['name']} (${my_price})")
 
 
-for x in products:
-    my_price = x["price"]
-    print(f" + {x['name']} (${my_price})")
-
-
-
-
-
-
-
-#products ["id"] = 1
-#while products["id"] == 1 :  # This constructs an infinite loop
- #  num = raw_input("Enter a product identifier  :")
- #  print("You entered: ", num)
+z = input("Please input a product indentifier, or 'Done' if there are no new items: ")
+matching_products = [p for p in products if str(p["id"]) == str(z)]
+matching_product = matching_products [0]
+print("Z: " + matching_product["name"] + " $"  + str(matching_product ["price"]))
+ 
