@@ -83,15 +83,19 @@ for z in zs:
      matching_products = [p for p in products if str(p["id"]) == str(z)]
      matching_product = matching_products [0]
      customer_total = customer_total + matching_product["price"]
-     print("... " + matching_product["name"] + " $"  + str(matching_product ["price"]))
+     print("... " + matching_product["name"] + " ("  + to_usd((matching_product ["price"]))+")")
 print("------------------------------------------")
-print("Subtotal: $" + (str(customer_total)))
+print("Subtotal: " + (to_usd(customer_total)))
 
 def calculate_tax():
     sales_tax = 0.0875
     return (sales_tax * customer_total)
-print("Tax: $" + (str(calculate_tax())))
-print("Total: $" + (str(calculate_tax()) + str(customer_total)))
+
+print("Tax: " + to_usd((calculate_tax())))
+
+grocery_total = calculate_tax() + customer_total
+
+print("Total: " + (to_usd(grocery_total)))
 print("------------------------------------------")
 print("Thanks! See you again soon!")
 print("------------------------------------------")
