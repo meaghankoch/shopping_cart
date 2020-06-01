@@ -38,6 +38,10 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
+import datetime
+t = datetime.datetime.now()
+#print(type(t))
+
 #Data Exploration
     #print(type(products)) --> List
     #print(dir(products))
@@ -49,13 +53,67 @@ for p in products:
  my_price = p["price"]
    #  print(f" + {p['name']} (${my_price})")
 
+customer_total = 0 
+zs = []
 
 while True: 
     z = input("Please input a product indentifier, or 'Done' if there are no new items: ")
     if z == "Done":
         break
     else:
-        matching_products = [p for p in products if str(p["id"]) == str(z)]
-        matching_product = matching_products [0]
-        print("Z: " + matching_product["name"] + " $"  + str(matching_product ["price"]))
- 
+         zs.append(z)
+
+#print(zs)
+
+#for z in zs:
+ #    matching_products = [p for p in products if str(p["id"]) == str(z)]
+  #   matching_product = matching_products [0]
+   #  customer_total = customer_total + matching_product["price"]
+    # print("Selected Product: " + matching_product["name"] + " $"  + str(matching_product ["price"]))
+
+# Display
+print("------------------------------------------")
+print("Welcome to Meaghan's Farmstand")
+print("www.meaghan'sfarmstand.com")
+print("------------------------------------------")
+print("Checkout At:", str((t.strftime("%Y-%m-%d"))), str(t.strftime("%I:%M %p")))
+print("------------------------------------------")
+print("Selected Products:")
+for z in zs:
+     matching_products = [p for p in products if str(p["id"]) == str(z)]
+     matching_product = matching_products [0]
+     customer_total = customer_total + matching_product["price"]
+     print("... " + matching_product["name"] + " $"  + str(matching_product ["price"]))
+print("------------------------------------------")
+print("Subtotal: $" + (str(customer_total)))
+
+def calculate_tax():
+    sales_tax = 0.0875
+    return (sales_tax * customer_total)
+print("Tax: $" + (str(calculate_tax())))
+print("Total: $" + (str(calculate_tax()) + str(customer_total)))
+print("------------------------------------------")
+print("Thanks! See you again soon!")
+print("------------------------------------------")
+
+
+
+#> ---------------------------------
+#> GREEN FOODS GROCERY
+#> WWW.GREEN-FOODS-GROCERY.COM
+#> ---------------------------------
+#> CHECKOUT AT: 2020-02-07 03:54 PM
+#> ---------------------------------
+#> SELECTED PRODUCTS:
+#>  ... Chocolate Sandwich Cookies ($3.50)
+#>  ... All-Seasons Salt ($4.99)
+#>  ... Robust Golden Unsweetened Oolong Tea ($2.49)
+#>  ... All-Seasons Salt ($4.99)
+#>  ... Chocolate Sandwich Cookies ($3.50)
+#> ---------------------------------
+#> SUBTOTAL: $19.47
+#> TAX: $1.70
+#> TOTAL: $21.17
+#> ---------------------------------
+#> THANKS, SEE YOU AGAIN SOON!
+#> ---------------------------------
