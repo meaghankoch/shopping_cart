@@ -58,8 +58,11 @@ zs = []
 
 while True: 
     z = input("Please input a product indentifier, or 'Done' if there are no new items: ")
-    if z == "Done":
-        break
+    if z == "Done" or z == "DONE" or z == "done":
+        break 
+    elif z > "21":
+        print("Hey, are you sure that product identifier is correct? Please try again!")
+
     else:
          zs.append(z)
 
